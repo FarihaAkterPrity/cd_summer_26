@@ -1,0 +1,147 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    // LT1_1 : Numeric Constant
+    string input;
+    cout << "\n Numeric Constant \n";
+    cout << "Enter Input: ";
+    cin >> input;
+
+    bool isNumeric = true;
+    for (int i = 0; i < input.length(); i++)
+    {
+        if (input[i] < '0' || input[i] > '9')
+        {
+            isNumeric = false;
+            break;
+        }
+    }
+
+    if (isNumeric)
+        cout << "Numeric Constant" << endl;
+    else
+        cout << "Not Numeric" << endl;
+
+    // LT1_2 : Operator Check
+    cout << "\n Operator Check \n";
+    cout << "Enter Equation: ";
+    cin >> input;
+
+    for (int i = 0; i < input.length(); i++)
+    {
+        if (input[i] == '+' || input[i] == '-' ||
+            input[i] == '*' || input[i] == '/' ||
+            input[i] == '%' || input[i] == '=')
+        {
+            cout << "Operator: " << input[i] << endl;
+        }
+    }
+
+    // LT1_3 : Comment Check
+    cout << "\n Comment Check \n";
+    cout << "Enter Comment: ";
+    cin >> input;
+
+    if (input[0] == '/' && input[1] == '/')
+        cout << "Single Line Comment" << endl;
+    else if (input[0] == '/' && input[1] == '*')
+        cout << "Multi Line Comment" << endl;
+    else
+        cout << "Not a Comment" << endl;
+
+    // LT1_4 : Identifier Check
+    cout << "\n Identifier Check \n";
+    cin.ignore();
+
+    string identifier;
+    cout << "Enter Identifier: ";
+    getline(cin, identifier);
+
+    bool valid = true;
+    if (!((identifier[0] >= 'A' && identifier[0] <= 'Z') ||
+          (identifier[0] >= 'a' && identifier[0] <= 'z') ||
+           identifier[0] == '_'))
+    {
+        valid = false;
+    }
+
+    for (int i = 1; i < identifier.length(); i++)
+    {
+        if (!((identifier[i] >= 'A' && identifier[i] <= 'Z') ||
+              (identifier[i] >= 'a' && identifier[i] <= 'z') ||
+              (identifier[i] >= '0' && identifier[i] <= '9') ||
+               identifier[i] == '_'))
+        {
+            valid = false;
+            break;
+        }
+    }
+
+    if (valid)
+        cout << "Valid Identifier" << endl;
+    else
+        cout << "Not a Valid Identifier" << endl;
+
+    // LT1_5 : Average of Array
+    cout << "\n Average of Array \n";
+    int arr[100];
+    int n, sum = 0;
+    float average;
+
+    cout << "Enter Number of Elements: ";
+    cin >> n;
+    cout << "Enter Array Elements: ";
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+        sum += arr[i];
+    }
+
+    average = (float)sum / n;
+    cout << "Average = " << average << endl;
+
+    // LT1_6 : Minimum & Maximum
+    cout << "\n Minimum & Maximum \n";
+    int arr2[100];
+    int minValue, maxValue;
+
+    cout << "Enter Number of Elements: ";
+    cin >> n;
+    cout << "Enter Array Elements: ";
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr2[i];
+    }
+
+    minValue = arr2[0];
+    maxValue = arr2[0];
+    for (int i = 1; i < n; i++)
+    {
+        if (arr2[i] < minValue)
+            minValue = arr2[i];
+        if (arr2[i] > maxValue)
+            maxValue = arr2[i];
+    }
+
+    cout << "Minimum Value = " << minValue << endl;
+    cout << "Maximum Value = " << maxValue << endl;
+
+    // LT1_7 : String Concatenation
+    cout << "\n String Concatenation \n";
+    string firstName, lastName, fullName;
+    cout << "Enter First Name: ";
+    cin >> firstName;
+
+    cout << "Enter Last Name: ";
+    cin >> lastName;
+    fullName = firstName + " " + lastName;
+
+    cout << "Full Name: " << fullName << endl;
+
+    return 0;
+}
